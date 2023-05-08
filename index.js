@@ -67,20 +67,26 @@ class BinaryTree {
       while (true) {
         if (value < current.value) {
           if (current.left === null) {
-            return count ? `The word '${value}' appeared ${count} times` : `The word '${value}' could not be found!}`;
+            return count
+              ? `The word '${value}' appeared ${count} times`
+              : `The word '${value}' could not be found!}`;
           } else {
             current = current.left;
           }
         } else if (value > current.value) {
           if (current.right === null) {
-            return count ? `The word '${value}' appeared ${count} times` : `The word '${value}' could not be found!`;
+            return count
+              ? `The word '${value}' appeared ${count} times`
+              : `The word '${value}' could not be found!`;
           } else {
             current = current.right;
           }
         } else if (value === current.value) {
           count++;
           if (current.left === null && current.right === null) {
-            return count ? `The word '${value}' appeared ${count} times` : `The word '${value}' could not be found!`;
+            return count
+              ? `The word '${value}' appeared ${count} times`
+              : `The word '${value}' could not be found!`;
           } else {
             current = current.right;
           }
@@ -91,26 +97,26 @@ class BinaryTree {
 }
 
 let tree = new BinaryTree();
-tree.insert("start");
-tree.insert("child");
-tree.insert("steak");
-tree.insert("movie");
-tree.insert("menu");
-tree.insert("steak");
-tree.insert("child");
-tree.insert("map");
-tree.insert("menu");
-tree.insert("map");
-tree.insert("pizza");
-tree.insert("start");
-tree.insert("pizza");
-tree.insert("child");
-tree.insert("steak");
-tree.insert("menu");
-tree.insert("steak");
-tree.insert("map");
+tree.insert('start');
+tree.insert('child');
+tree.insert('steak');
+tree.insert('movie');
+tree.insert('menu');
+tree.insert('steak');
+tree.insert('child');
+tree.insert('map');
+tree.insert('menu');
+tree.insert('map');
+tree.insert('pizza');
+tree.insert('start');
+tree.insert('pizza');
+tree.insert('child');
+tree.insert('steak');
+tree.insert('menu');
+tree.insert('steak');
+tree.insert('map');
 
-// console.log(tree.searchTree("start"));
+console.log(tree.searchTree('start'));
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///// Question 1 END /////
@@ -126,18 +132,18 @@ tree.insert("map");
 // SOLUTION //
 
 const csvToObject = (csvFile) => {
-  let csvArray = csvFile.split("\n");
+  let csvArray = csvFile.split('\n');
   let csvObjectArray = [];
   let csvObject = new Object();
-  let csvObjectKeys = csvArray[0].split(",");
+  let csvObjectKeys = csvArray[0].split(',');
 
   for (let i = 1; i < csvArray.length; i++) {
-    let csvObjectValues = csvArray[i].split(",");
+    let csvObjectValues = csvArray[i].split(',');
     for (let j = 0; j < csvObjectKeys.length; j++) {
       let key = csvObjectKeys[j].trim();
       let value = csvObjectValues[j].trim();
 
-      value = key === "Age" || key === "Amount" ? parseInt(value) : value;
+      value = key === 'Age' || key === 'Amount' ? parseInt(value) : value;
       csvObject[key] = value;
     }
     csvObjectArray.push(csvObject);
@@ -148,15 +154,26 @@ const csvToObject = (csvFile) => {
 
 // get the csv file from ./staff_records.csv and pass it to the csvToObject function
 
-import fs from "fs";
+import fs from 'fs';
 
-const csvFile = fs.readFileSync("./staff_records.csv", "utf8");
+const csvFile = fs.readFileSync('./staff_records.csv', 'utf8');
 let obj = csvToObject(csvFile);
 
 const sortStaffRecords = (staffRecords, sort) => {
-  let what_to_sort = sort == 1 ? "First_Name" : sort == 2 ? "Last_Name" : sort == 3 ? "Age" : "First_Name";
+  let what_to_sort =
+    sort == 1
+      ? 'First_Name'
+      : sort == 2
+      ? 'Last_Name'
+      : sort == 3
+      ? 'Age'
+      : 'First_Name';
   let sortedStaffRecords = staffRecords.sort((a, b) =>
-    a[what_to_sort] > b[what_to_sort] ? 1 : b[what_to_sort] > a[what_to_sort] ? -1 : 0,
+    a[what_to_sort] > b[what_to_sort]
+      ? 1
+      : b[what_to_sort] > a[what_to_sort]
+      ? -1
+      : 0
   );
   return sortedStaffRecords;
 };
@@ -175,7 +192,7 @@ const sortStaffRecords = (staffRecords, sort) => {
 // SOLUTION //
 
 const countWords = (text) => {
-  let textArray = text.split(" "),
+  let textArray = text.split(' '),
     textObject = {};
 
   for (let i = 0; i < textArray.length; i++) {
@@ -183,7 +200,9 @@ const countWords = (text) => {
     textObject[word] ? textObject[word]++ : (textObject[word] = 1);
   }
 
-  textObject = Object.fromEntries(Object.entries(textObject).sort(([, a], [, b]) => b - a));
+  textObject = Object.fromEntries(
+    Object.entries(textObject).sort(([, a], [, b]) => b - a)
+  );
   return textObject;
 };
 
@@ -198,56 +217,56 @@ const countWords = (text) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 let wordsDict = [
-  "lake",
-  "hair",
-  "year",
-  "road",
-  "tale",
-  "food",
-  "map",
-  "ear",
-  "poet",
-  "hall",
-  "sir",
-  "menu",
-  "son",
-  "art",
-  "exam",
-  "city",
-  "ad",
-  "goal",
-  "gene",
-  "way",
-  "math",
-  "dirt",
-  "loss",
-  "debt",
-  "dad",
-  "mall",
-  "love",
-  "fact",
-  "town",
-  "king",
-  "oven",
-  "song",
-  "lady",
-  "area",
-  "mode",
-  "girl",
-  "gate",
-  "bird",
-  "poem",
-  "mom",
-  "news",
-  "meat",
-  "desk",
-  "bath",
-  "wife",
-  "data",
-  "wood",
-  "unit",
-  "idea",
-  "lab",
+  'lake',
+  'hair',
+  'year',
+  'road',
+  'tale',
+  'food',
+  'map',
+  'ear',
+  'poet',
+  'hall',
+  'sir',
+  'menu',
+  'son',
+  'art',
+  'exam',
+  'city',
+  'ad',
+  'goal',
+  'gene',
+  'way',
+  'math',
+  'dirt',
+  'loss',
+  'debt',
+  'dad',
+  'mall',
+  'love',
+  'fact',
+  'town',
+  'king',
+  'oven',
+  'song',
+  'lady',
+  'area',
+  'mode',
+  'girl',
+  'gate',
+  'bird',
+  'poem',
+  'mom',
+  'news',
+  'meat',
+  'desk',
+  'bath',
+  'wife',
+  'data',
+  'wood',
+  'unit',
+  'idea',
+  'lab',
 ];
 
 // Given a dictionary of words. Write a program that will ask a user to enter a string or alphabets of any length and output the words that can be formed based on the list of words in the dictionary (think Scrabble). Letters that are not used should also be displayed to the user. Only words that appear in the dictionary can be formed with letters of alphabets entered by the user.
@@ -256,9 +275,7 @@ let wordsDict = [
 
 // SOLUTION //
 
-const scrabble = (letters) => {
-  
-};
+const scrabble = (letters) => {};
 
 // console.log(scrabble("lakem"));
 
@@ -272,16 +289,22 @@ const scrabble = (letters) => {
 
 // convert customer account info from csv to an array of objects
 
-const CustomerInfoCsvFile = fs.readFileSync("./customer_account_info.csv", "utf8");
+const CustomerInfoCsvFile = fs.readFileSync(
+  './customer_account_info.csv',
+  'utf8'
+);
 let CustomerInfoCsvData = csvToObject(CustomerInfoCsvFile);
 
-const CustomerTrxnCsvFile = fs.readFileSync("./customer_account_trns.csv", "utf8");
+const CustomerTrxnCsvFile = fs.readFileSync(
+  './customer_account_trns.csv',
+  'utf8'
+);
 let CustomerTrxnCsvData = csvToObject(CustomerTrxnCsvFile);
 
 // check account balance
 const checkAccBal = (acc_no) => {
   let acc_bal = 0;
-  let customer_name = "";
+  let customer_name = '';
 
   let acc_deatils = checkAccDetails(acc_no);
 
@@ -294,7 +317,9 @@ const checkAccBal = (acc_no) => {
   for (let i = 0; i < CustomerTrxnCsvData.length; i++) {
     let trxn = CustomerTrxnCsvData[i];
     if (trxn.AccountNumber == acc_no) {
-      trxn.CreditDebit === "Credit" ? (acc_bal += trxn.Amount) : (acc_bal -= trxn.Amount);
+      trxn.CreditDebit === 'Credit'
+        ? (acc_bal += trxn.Amount)
+        : (acc_bal -= trxn.Amount);
     }
   }
 
@@ -305,9 +330,9 @@ const checkAccBal = (acc_no) => {
 // check account details
 
 const checkAccDetails = (acc_no) => {
-  let first_name = "";
-  let last_name = "";
-  let phone_number = "";
+  let first_name = '';
+  let last_name = '';
+  let phone_number = '';
   let user_exists = false;
 
   for (let i = 0; i < CustomerInfoCsvData.length; i++) {
@@ -317,11 +342,11 @@ const checkAccDetails = (acc_no) => {
       last_name = customer.LastName;
       phone_number = customer.PhoneNumber;
       user_exists = true;
-    };
+    }
   }
 
   if (!user_exists) {
-    return "User does not exist";
+    return 'User does not exist';
   }
 
   let message = {
@@ -329,7 +354,7 @@ const checkAccDetails = (acc_no) => {
     last_name: last_name,
     phone_number: phone_number,
     text: `First Name: ${first_name}\nLast Name: ${last_name}\nPhone Number: ${phone_number}`,
-  }
+  };
 
   return message;
 };
@@ -384,7 +409,7 @@ const changePhoneNumber = (acc_no, old_phone_number, new_phone_number) => {
     let message = `Phone number changed from ${old_phone_number} to ${new_phone_number}`;
     return message;
   } else {
-    return "Phone number does not match";
+    return 'Phone number does not match';
   }
 };
 
@@ -396,3 +421,5 @@ const changePhoneNumber = (acc_no, old_phone_number, new_phone_number) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///// Question 5 END /////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+// Start the project with "node index.js" in the terminal
