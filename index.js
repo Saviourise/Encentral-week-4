@@ -292,7 +292,7 @@ const scrabble = (word) => {
   return message;
 };
 
-console.log(scrabble("kelaoardjr"));
+// console.log(scrabble("kelaoardjr"));
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///// Question 4 END /////
